@@ -44,18 +44,21 @@ export type Database = {
           grade: number | null
           name: string | null
           no: number
+          rank: number | null
         }
         Insert: {
           category?: number | null
           grade?: number | null
           name?: string | null
           no: number
+          rank?: number | null
         }
         Update: {
           category?: number | null
           grade?: number | null
           name?: string | null
           no?: number
+          rank?: number | null
         }
         Relationships: []
       }

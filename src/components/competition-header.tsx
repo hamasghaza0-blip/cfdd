@@ -48,6 +48,19 @@ export function CompetitionHeader() {
             🎯 معايير النجاح: 85 درجة فما فوق
           </p>
         </div>
+        
+        {/* زر الموقع الرئيسي */}
+        <div className="mt-8">
+          <a 
+            href="https://alsharqyquran-competition.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-islamic text-primary-foreground rounded-xl font-bold text-lg hover:scale-105 transition-all duration-300 glow-effect shadow-lg hover:shadow-xl"
+          >
+            <Building2 className="h-6 w-6" />
+            لتصفح الموقع الرئيسي
+          </a>
+        </div>
       </div>
     </div>
   )

@@ -119,26 +119,33 @@ export function ResultCard({ name, grade, category, rank }: ResultCardProps) {
           >
             {grade} درجة
           </Badge>
-          <div className="flex flex-col gap-2">
-            {category && (
-              <Badge variant="outline" className="text-sm">
-                فئة {category}
-              </Badge>
-            )}
-            {rank && category && (
+        </div>
+        
+        {/* عرض الفئة والترتيب بشكل منفصل */}
+        <div className="mt-4 space-y-3">
+          {category && (
+            <Badge variant="outline" className="text-lg px-4 py-2 bg-blue-50 text-blue-800 border-blue-200">
+              فئة {getCategoryName(category)}
+            </Badge>
+          )}
+          
+          {rank && category && (
+            <div className="mt-3">
               <Badge 
                 variant="outline" 
                 className={cn(
-                  "text-sm font-bold",
+                  "text-lg font-bold px-6 py-3 border-2",
                   rank <= 3 
-                    ? "bg-gradient-golden text-accent-foreground border-accent/30" 
-                    : "bg-secondary text-secondary-foreground"
+                    ? "bg-gradient-golden text-accent-foreground border-accent/40 golden-glow animate-pulse" 
+                    : rank <= 10
+                    ? "bg-gradient-islamic text-primary-foreground border-primary/40 glow-effect"
+                    : "bg-secondary text-secondary-foreground border-secondary/40"
                 )}
               >
-                الترتيب {rank} في الفئة {category}
+                الترتيب {rank} في فئة {getCategoryName(category)}
               </Badge>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </CardHeader>
 

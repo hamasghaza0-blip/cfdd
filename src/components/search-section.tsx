@@ -35,7 +35,7 @@ export function SearchSection() {
       // البحث بطرق متعددة لضمان العثور على النتائج
       const { data, error } = await supabase
         .from('results')
-        .select('*')
+        .select('name, no, category, grade, rank')
         .ilike('name', `%${cleanSearchTerm}%`)
         .limit(1) // عرض نتيجة واحدة فقط
       
@@ -46,7 +46,7 @@ export function SearchSection() {
         
         const { data: alternativeData, error: altError } = await supabase
           .from('results')
-          .select('*')
+          .select('name, no, category, grade, rank')
           .ilike('name', `%${searchPattern}%`)
           .limit(1) // عرض نتيجة واحدة فقط
         
