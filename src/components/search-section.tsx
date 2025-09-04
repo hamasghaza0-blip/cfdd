@@ -8,10 +8,11 @@ import { Card, CardContent } from "@/components/ui/card"
 
 interface Result {
   name: string
-  no: number
+  id: number
   category?: number | null
   grade?: number | null
   rank?: number | null
+  teacher?: string | null
 }
 
 export function SearchSection() {
@@ -34,8 +35,8 @@ export function SearchSection() {
       
       // البحث بطرق متعددة لضمان العثور على النتائج
       const { data, error } = await supabase
-        .from('results')
-        .select('name, no, category, grade, rank')
+        .from('reciters')
+        .select('name, id, category, grade, rank, teacher')
         .ilike('name', `%${cleanSearchTerm}%`)
         .limit(1) // عرض نتيجة واحدة فقط
       
@@ -45,8 +46,8 @@ export function SearchSection() {
         const searchPattern = words.join('%')
         
         const { data: alternativeData, error: altError } = await supabase
-          .from('results')
-          .select('name, no, category, grade, rank')
+          .from('reciters')
+          .select('name, id, category, grade, rank, teacher')
           .ilike('name', `%${searchPattern}%`)
           .limit(1) // عرض نتيجة واحدة فقط
         
@@ -156,11 +157,12 @@ export function SearchSection() {
           {/* عرض النتيجة الأولى فقط */}
           {results.slice(0, 1).map((result) => (
             <ResultCard
-              key={result.no}
+              key={result.id}
               name={result.name || "غير محدد"}
               grade={result.grade || 0}
               category={result.category}
               rank={result.rank}
+              teacher={result.teacher}
             />
           ))}
         </div>
