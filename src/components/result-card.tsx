@@ -8,7 +8,6 @@ interface ResultCardProps {
   grade: number
   category?: number
   rank?: number
-  teacher?: string | null
 }
 
 const getResultMessage = (grade: number) => {
@@ -47,7 +46,7 @@ const getGradeColor = (grade: number) => {
   return "secondary"
 }
 
-export function ResultCard({ name, grade, category, rank, teacher }: ResultCardProps) {
+export function ResultCard({ name, grade, category, rank }: ResultCardProps) {
   const isSuccess = grade >= 85
   const Icon = getGradeIcon(grade)
   const gradeColor = getGradeColor(grade)
@@ -107,12 +106,6 @@ export function ResultCard({ name, grade, category, rank, teacher }: ResultCardP
         <CardTitle className="text-xl font-bold mb-2 text-foreground">
           {name}
         </CardTitle>
-        
-        {teacher && (
-          <p className="text-sm text-muted-foreground mb-3">
-            المعلم: {teacher}
-          </p>
-        )}
         
         <div className="flex items-center justify-center gap-2">
           <Badge 
